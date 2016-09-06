@@ -1,0 +1,30 @@
+
+body {
+    display: inline-block;
+margin-left:25%;
+background:#fffddd;
+}
+.resume{
+border:2px solid black;
+padding:10px;
+background:white;
+}
+
+.heading{
+background:grey;
+color:black;
+}
+
+.right{
+text-align:right;
+}
+
+.line-height-2{
+line-height:2;
+}
+
+
+footer{
+
+margin-top:20px;
+}
