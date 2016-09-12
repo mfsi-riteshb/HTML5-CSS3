@@ -1,4 +1,6 @@
 
+<!DOCTYPE html> 
+
 
 <!-- 
    This document is designed using concept of html5 . 
@@ -7,16 +9,20 @@
    and api are introduced in html5.Also for supporting html5 tag 
    in IE9 and less.we are using HTML5Shiv .cdn is avalilable at
    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-   
 -->
-<!DOCTYPE html> 
 <html lang="en-US">
-   <title>Resume</title>
+  
    <head>
+    <title>Resume</title>
       <meta charset="UTF-8" />
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <![endif]-->
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+
+      <!-- link for css file used for the icons used in page-->
+
+      <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css">
       <meta name="keywords" content="resume,riteshbisht,developer" /> 
       <meta name="description" content="ritesh bisht resume" />
       <meta name="author" content="Ritesh Bisht" />
@@ -24,22 +30,19 @@
       <meta http-equiv="refresh" content="30" />
 
    </head>
-   <body>
-      <main >
-         <header >
+   <body id="resume">
+      <main>
+         <header>
             <h1>Ritesh Bisht</h1>
-            <p align="right">Email:ritesh.bisht93@gmail.com</p>
-            <p><b>Ph:</b>9958680578</p>
-            <p><b>Address:</b></p>
-            <address>Plot no 72,block b-9,<br>
+            <p><span id="phone"><b>Ph:</b> 9958680578</span><span id="email"><b>Email</b>:ritesh.bisht93@gmail.com</span></p>
+            <address><b>Address:</b>Plot no 72,block b-9,<br>
                sector-5 rohini,delhi-110085
             </address>
-            <p>DOB: 17th july,1994</p>
+            <p><b>DOB:</b> 17th july,1994</p>
          </header>
-         <br/>
          <section >
-            <h3 >EDUCATIONAL QUALIFICATIONS</h3>
-            <section>
+            <h3 ><span class="icons"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>EDUCATIONAL QUALIFICATIONS</h3>
+            <section id="educations">
                <ul>
                   <li>
                      <h5>Examination: B.Tech-Information Techology </h5>
@@ -68,30 +71,30 @@
                </ul>
             </section>
          </section>
-         <br/>
+       
          <section>
-            <h3 >PROJECTS(<a href="http://www.github.com/riteshbisht" target="_blank">Github Profile</a>)</h3>
+            <h3 ><span class="icons"><i class="fa fa-suitcase" aria-hidden="true"></i></span>PROJECTS(<a href="http://www.github.com/riteshbisht" target="_blank">Github Profile</a>)</h3>
             <ul class="line-height-2">
                <li>Created a Bank Management System as a college project using java and also an standalone application in java of snake game</li>
                <li>created a portfolio website using html,materialize and javascript</li>
-               <li>participated in web development competition and created a website using html,bootstrap,jquery</li>
+               <li>participated in web development competition and created a website using html,bootstrap,jquery<a href="http://www.riteshbisht.co.nf"> (PREVIEW).</a></li>
                <li>did a summer project regarding providing university studentwith study material to read online and chat application(Laravel framework)</li>
                <li>did some research on natural language processing(Language used python)</li>
-               <li> Developed website(<a href="http://www.coronabpit.com" target="_blank">Corona Bpit</a>) and created an android app(Corona 2k16) for college festival</li>
+               <li> Developed website(<a href="http://www.coronabpit.com" target="_blank">Corona Bpit</a>) and created an android app(Corona 2k16) for college festival.</li>
+               <li>Rest Api creation.<a href="http://django-audiodict.rhcloud.com"> (PREVIEW)</a>.</li>
             </ul>
          </section>
-         <br/>
          <section>
-            <h3 >TECHNICAL SKILLS</h3>
+            <h3 ><span class="icons"><i class="fa fa-laptop" aria-hidden="true"></i></span>TECHNICAL SKILLS</h3>
             <ul class="line-height-2">
                <li><b>Programming Languages:</b> Java/Android,C,C++,SQL,HTML,JavaScript,CSS,Jquery</li>
                <li><b>Tools:</b> Sublime Text,Atom text Editor,Eclipse,Android Studio</li>
                <li><b>Operating System:</b> Windows(XP,8.1),Linux(Ubuntu)</li>
             </ul>
          </section>
-         <br>
+      
          <section >
-            <h3 >WORKSHOP AND ADDITIONAL EXPERIENCES</h3>
+            <h3><span class="icons"><i class="fa fa-tags" aria-hidden="true"></i></span>WORKSHOP AND ADDITIONAL EXPERIENCES</h3>
             <ul class="line-height-2">
                <li>Attended Linux WorkShop organized by Rlabz</li>
                <li>Completed a java course from innobuzz knowledge Solutions</li>
@@ -99,17 +102,16 @@
                <li>Appeared in AMCAT exam and acquired 95 percentile in Computer Programming and 88% percentilr in Computer Science.</li>
             </ul>
          </section>
-         <br/>
          <section >
-            <h3 >HOBBIES</h3>
+            <h3> <span class="icons"><i class="fa fa-user-plus" aria-hidden="true"></i></span>HOBBIES</h3>
             <ul>
-               <li>Eager to learn about the basic of COmputer Science to better understand the essence of programming and improve my skills.</li>
+               <li>Eager to learn about the basic of Computer Science to better understand the essence of programming and improve my skills.</li>
                <li>Watching movies and Listening to movies.</li>
             </ul>
          </section>
          <footer >
-            <hr/>
-            Created by Ritesh bisht
+            
+          <span class="icons"><i class="fa fa-copyright" aria-hidden="true"></i></span>  Created by Ritesh bisht
          </footer>
       </main>
    </body>

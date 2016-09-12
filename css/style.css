@@ -1,0 +1,236 @@
+@media only screen and (min-width: 1000px) {
+html{
+	line-height: 1.1;
+	font-size:18px;
+	word-spacing: 1px;
+	background: #ccf;
+
+}
+#resume {
+
+	margin-left:20%;
+	margin-right:20%;
+	
+}
+
+/* this  rule applied to odd section element*/
+#resume main{
+	border:1px solid black;
+	background: #DBF9FA;
+	box-shadow: -10px -10px 40px black;
+	margin:30px;
+}
+
+#resume > main   header{
+	width:auto;
+	padding:20px;
+	margin:0px;
+	
+}
+
+#resume >main > header > h1{
+	text-shadow:1px 2px 5px black;
+	text-decoration: underline;
+}
+
+
+#resume >main section{
+
+	padding-bottom:5px;	
+	position: relative;
+}
+
+/* for even section element of main*/
+#resume >main section:nth-child(even){
+	background:#cfc;
+
+}
+/*for all the  direct h3 descendant of all section of main */
+#resume > main  section >h3{
+	width:100%;
+	background:#ccf;
+	text-indent:10px;
+	padding:5px 0px 5px 0px;
+	margin-top:0px;
+	border-top:2px solid black;
+	text-shadow:1px 1px 50px black;
+
+
+}
+
+/* for all li of section of main*/
+#resume > main section li
+{
+	list-style: square;
+	font-family: "times new roman";
+	margin:10px 0px;
+}
+
+#resume > main section ul 
+{
+	margin-top:20px;
+
+}
+
+/* for all ul of li of section of main*/
+#resume > main section li ul
+{
+	list-style: square;
+	list-style-position: inside;
+	margin-top:-10px;
+	font-family: "times new roman";
+
+}
+/* for all li of ul of li of section of main*/
+#resume > main section li ul li
+{
+	margin:1px;
+	
+}
+#resume >main footer{
+	background: gray;
+	padding:10px;
+	border-top:2px solid black;
+	text-align: right;
+}
+
+
+#resume .icons{
+	padding-right: 10px;
+}
+
+#resume  header #email{
+	display:inline-block;
+	float:right;
+}
+
+#resume a:link{
+	color:#410;
+	font-weight: bold;
+	text-decoration: none;
+}
+#resume a:hover{
+	color:blue;
+	text-decoration: none;
+}
+
+}
+
+@media  screen and (max-width: 999px) {
+   html{
+	line-height: 1.1;
+	font-size:18px;
+	word-spacing: 1px;
+	background: #ccf
+}
+#resume {
+
+	width:auto;
+	background: #ccf;
+	
+}
+
+/* this backgound color apploid to odd section element*/
+#resume main{
+	width:inherit;
+	background: #DBF9FA;
+	margin:30px;
+}
+
+#resume > main   header{
+	width:auto;
+	padding:20px;
+	margin:0px;
+	
+}
+#resume p{
+
+}
+#resume >main > header > h1{
+	text-shadow:1px 2px 5px black;
+	text-decoration: underline;
+}
+
+/* for all the section of main*/
+#resume >main section{
+
+	padding-bottom:5px;	
+	position: relative;
+
+}
+
+/* for even section element of main*/
+#resume >main section:nth-child(even){
+	background:#cfc;
+
+}
+/*for all the  direct h3 descendant of all section of main */
+#resume > main  section >h3{
+	width:100%;
+	background:#ccf;
+	text-indent:10px;
+	background: gray;
+	padding:5px 0px 5px 0px;
+	margin-top:0px;
+	border-top:2px solid black;
+
+
+}
+
+/* for all li of section of main*/
+#resume > main section li
+{
+	list-style: square;
+
+	font-family: "times new roman";
+	word-wrap: break-word;
+	margin:10px 0px;
+}
+
+#resume > main section ul 
+{
+	margin:20px;
+
+}
+
+/* for all ul of li of section of main*/
+#resume > main section li ul
+{
+	list-style: square;
+	list-style-position: inside;
+	margin-top: -10px;
+	font-family: "times new roman";
+}
+
+#resume > main section li ul  li
+{
+	margin-top:1px;
+
+}
+#resume >main footer{
+	background: gray;
+	padding:10px;
+	border-top:2px solid black;
+}
+
+#resume .icons{
+	padding-right: 10px;
+}
+
+#resume  header #email{
+	display: block;
+	margin-top:10px;
+	word-wrap: break-word;
+}
+
+#resume a:link{
+	color:#410;
+	font-weight: bold;
+	text-decoration: none;
+}
+#resume a:hover{
+	color:blue;
+	text-decoration: none;
+}
+
+}
