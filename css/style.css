@@ -43,16 +43,22 @@ address{
 	margin:30px;
 }
 
+.invalid {
+	border: 2px solid red;
+}
+
 #resume > main   header{
 	width:auto;
 	padding:20px;
 	margin:0px;
+
 	
 }
 
 #resume >main > header > h1{
 	text-shadow:1px 2px 5px black;
 	text-decoration: underline;
+	text-transform: uppercase;
 }
 
 
@@ -110,9 +116,9 @@ address{
 /* for all li of ul of li of section of main*/
 #resume > main section li ul li
 {
-	margin:1px;
-	
+	margin:1px;	
 }
+
 #resume >main footer{
 	background: gray;
 	padding:10px;
@@ -140,8 +146,163 @@ address{
 	text-decoration: none;
 }
 
+#resume-form {
+	margin-left:20%;
+	margin-right:20%;
 }
 
+#resume-form .row{
+	margin-bottom: 20px;
+}
+
+
+#resume-form div[class="button"]{
+	text-align: center;
+	height: 40px;
+
+
+
+}
+#resume-form .button button:hover{
+	background: #ffc;
+
+
+}
+
+
+
+
+
+#resume-form main{
+	border: 2px solid black;
+	border-radius: 10px;
+}
+#resume-form  main  h1{
+	text-align: center;
+    background: #abc;
+	margin:0px;
+	padding: 20px;
+		border-bottom: 2px solid black;
+}
+#resume-form h3{
+	background: #cfc;
+	margin: 0px;
+	padding: 10px;
+	text-transform: uppercase;
+	border-radius: 10px ;
+	text-align: center;
+}
+
+#resume-form label {
+	font-size:18px;
+	vertical-align: middle;
+	display: inline-block;
+	font-family:"times new roman";
+	text-transform: uppercase;
+	font-weight: bold;
+	margin: 10px;
+}
+
+
+#resume-form input{
+	
+    width:250px;
+    height: 30px;
+}
+#resume-form main section {
+	display: block;
+	border-bottom: 2px solid black;
+	
+}
+#resume-form textarea{
+
+	display: block;
+	resize: none;
+	
+}
+#resume-form .close{
+	position: absolute;
+	right:0px;
+	top:0px;
+	width: 40px;
+	height:40px;
+}
+#resume-form input[type=button] {
+
+	
+	background: #ccf;
+	width:30%;
+	height: 40px;
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 20px;
+
+}
+#resume-form input[id=submit] {
+	width: 100%;
+	background: #cfc;
+	height: 60px;
+}
+
+
+#resume-form  main section section{
+	padding: 10px;
+}
+#resume-form main section section:nth-child(odd) {
+	background: #ffc;
+}
+#resume-form main section section:nth-child(even) {
+
+	background: #cff;
+}
+
+#resume-form main section section div{
+	padding-left: 20px;
+	position: relative;
+}
+
+#resume-form main section section div label{
+	
+}
+
+#resume-form main section section div input,select{
+
+	position: absolute;
+	left:400px;
+	
+    
+}
+#resume-form  .language, #resume-form  .tools, #resume-form .operatingsystem{
+	width:300px;
+	height:100px;
+	display: inline-block;
+	text-align:center;
+}
+#resume-form .language input,#resume-form .tools input,#resume-form .operatingsystem input{
+  position: absolute;
+  left:0px;
+  z-index: 9999;
+}
+
+#resume-form .language input[type="button"],#resume-form .tools input[type="button"],#resume-form .operatingsystem input[type="button"]{
+  width:250px;
+  position: absolute;
+  left:0px;
+  top:50px;
+}
+
+#resume-form main section section div div{
+	padding: 0px;
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+
+
+
+
+}
+
+/* this is for amll screen*/
 @media  screen and (max-width: 999px) {
    html{
 	line-height: 1.1;
@@ -264,6 +425,154 @@ address{
 #resume a:hover{
 	color:blue;
 	text-decoration: none;
+}
+#resume-form {
+	margin-left:20%;
+	margin-right:20%;
+}
+
+#resume-form .row{
+	margin-bottom: 20px;
+}
+
+
+#resume-form div[class="button"]{
+	text-align: center;
+	height: 40px;
+
+
+
+}
+#resume-form .button button:hover{
+	background: #ffc;
+
+
+}
+
+
+
+
+
+#resume-form main{
+	border: 2px solid black;
+	border-radius: 10px;
+}
+#resume-form  main  h1{
+	text-align: center;
+    background: #abc;
+	margin:0px;
+	padding: 20px;
+		border-bottom: 2px solid black;
+}
+#resume-form h3{
+	background: #cfc;
+	margin: 0px;
+	padding: 10px;
+	text-transform: uppercase;
+	border-radius: 10px ;
+	text-align: center;
+}
+
+#resume-form label {
+	font-size:18px;
+	vertical-align: middle;
+	display: inline-block;
+	font-family:"times new roman";
+	text-transform: uppercase;
+	font-weight: bold;
+	margin: 10px;
+}
+
+
+#resume-form input{
+	
+    width:250px;
+    height: 30px;
+}
+#resume-form main section {
+	display: block;
+	border-bottom: 2px solid black;
+	
+}
+#resume-form textarea{
+
+	display: block;
+	width:90%;
+	
+}
+
+#resume-form input[type=button] {
+
+	
+	background: #ccf;
+	width:30%;
+	height: 40px;
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 20px;
+
+}
+
+#resume-form  main section section{
+	padding: 10px;
+}
+#resume-form main section section:nth-child(odd) {
+	background: #ffc;
+}
+#resume-form main section section:nth-child(even) {
+
+	background: #cff;
+}
+
+#resume-form main section section div{
+	padding-left: 20px;
+	position: relative;
+}
+
+#resume-form main section section div label{
+	
+}
+
+#resume-form main section section div input,select{
+
+    display: block;
+	text-transform: uppercase;
+
+    
+}
+#resume-form  .language, #resume-form  .tools, #resume-form .operatingsystem{
+	width:300px;
+	height:100px;
+	display: inline-block;
+	text-align:center;
+}
+#resume-form .language input,#resume-form .tools input,#resume-form .operatingsystem input{
+  position: absolute;
+  left:0px;
+  z-index: 9999;
+}
+
+#resume-form .language input[type="button"],#resume-form .tools input[type="button"],#resume-form .operatingsystem input[type="button"]{
+  width:250px;
+  position: absolute;
+  left:0px;
+  top:50px;
+}
+
+#resume-form main section section div div{
+	padding: 0px;
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+
+
+}
+
+
+@media print {
+
+#resume .fa{
+	display: none;
 }
 
 }

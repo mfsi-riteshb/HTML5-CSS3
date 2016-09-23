@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Resume Builder</title>
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+   </head>
+   <body id="resume-form">
+      <main>
+         <h1>RESUME BUILDER</h1>
+         <section>
+            <form if="my-form">
+               <section >
+                  <h3>Basic</h3>
+                  <div id="basic">
+	                  <div class="row">
+	                     <label>Name:</label>
+	                     <input type="text" name="firstname" maxlength=15 placeholder="FirstName" data-minlength="3" class="string basic_input"  onblur="Form.checkValidity(this);">
+	                  </div>
+	                  <div class="row">
+	                     <label>LastName:</label>
+	                     <input type="text" maxlength=15 name="lastname" placeholder="LastName" data-minlength="3" class="string basic_input"  onblur="Form.checkValidity(this);" >
+	                  </div>
+	                  <div class="row">
+	                     <label>Phone no:</label>
+	                     <input type="number"  class="phone basic_input"  placeholder="Phone" name="phone" onblur="Form.checkValidity(this);"  >
+	                  </div>
+	                  <div class="row">
+	                     <label>Address:</label>   
+	                     <textarea name="address" rows=7 cols=100 class="string basic_input" placeholder="Address" data-minlength="5" onblur="Form.checkValidity(this);"></textarea>
+	                  </div>
+	                  <div class="row">
+	                     <label>Date Of Birth:</label>
+	                     <input type="date" name="dob"  class="dob basic_input" placeholder="dob" onblur="Form.checkValidity(this);">
+	                  </div>
+	                  <div class="row">
+	                     <label>Email:</label>
+	                     <input type="text" maxlength=25 name="email" placeholder="Email" class="email basic_input" onblur="Form.checkValidity(this);">
+	                  </div>
+	                  <div class="row">
+	                     <label>Objective:</label>
+	                     <textarea name="objective" cols=100 rows=7 placeholder="Objective" class="string basic_input" data-minlength="3"  onblur="Form.checkValidity(this);" ></textarea> 
+	                  </div>
+                  </div>
+               </section>
+               <section>
+                  <h3>Educations</h3>
+                  <div  id="showeducation">
+
+                  </div>
+                  <div id="education">
+                     <div class="row">
+                        <label>Name:</label>
+                        <input type="text"  maxlength="30" name="name" placeholder="Name" data-minlength="3" class="string education_input" onblur="Form.checkValidity(this);">
+                     </div>
+                     <div class="row">
+                        <label>Year</label>
+                        <select  name="year" class="education_input">
+                           <option>1990</option>
+                           <option>1991</option>
+                           <option>1992</option>
+                           <option>1993</option>
+                           <option>1994</option>
+                           <option>1995</option>
+                           <option>1996</option>
+                           <option>1997</option>
+                           <option>1998</option>
+                           <option>1999</option>
+                           <option>2000</option>
+                           <option>2001</option>
+                           <option>2002</option>
+                           <option>2003</option>
+                           <option>2004</option>
+                           <option>2005</option>
+                           <option>2006</option>
+                           <option>2007</option>
+                           <option>2008</option>
+                           <option>2009</option>
+                           <option>2010</option>
+                           <option>2011</option>
+                           <option>2012</option>
+                           <option>2013</option>
+                           <option>2014</option>
+                           <option>2015</option>
+                           <option>2016</option>
+                           <option>2017</option>
+                           <option>2018</option>
+                        </select>
+                     </div>
+                     <div class="row">
+                        <label>University/Board</label>
+                        <input type="text" maxlength=30 name="university" placeholder="University/Board" data-minlength="2"  class="string education_input" onblur="Form.checkValidity(this);">
+                     </div >
+                     <div class="row">
+                        <label>Percentage/CGPA</label>
+                <input type="number" name="percentage" maxlength="2" placeholder="Percentage" class="string education_input" data-minlength="2"  onblur="Form.checkValidity(this);" >
+                     </div>
+                  </div>
+                  <div class="button" id="addeducation" ><input type="button" value="Add Education" onclick="CreateData.addEducation()"></div>
+               </section>
+               <section>
+                  <h3>Projects</h3>
+                  <div  id="showproject">
+
+                  </div>
+                  <div id="project">
+                     <div class="row">
+                        <label>Description</label>
+                        <textarea name="description" cols=100 rows=7 placeholder="Tell  About Project" data-minlength="5" class="string project_input" onblur="Form.checkValidity(this);" ></textarea>	
+                     </div>
+                     <div class="row">
+                        <label>Url</label>
+                        <input type="text" maxlength=30 name="url" data-minlength="3" placeholder="Url" class="string project_input" onblur="Form.checkValidity(this);">	
+                     </div>
+                  </div>
+                <div  class="button" id="addprojects"><input type="button" " value="Add Projects" onclick="CreateData.addProject()"></div>
+               </section>
+               <section>
+                  <h3>Skills</h3>
+                  <div  id="showskill">
+                    <ul>
+                    	<li id="li_language">Languages:<span id="span_language"></span></li>
+                    	<li id="li_tool">Tools:<span id="span_tool"></span></li>
+                    	<li id="li_operatingsystem">Operating System:<span id="span_operatingsystem"></span></li>
+                    <ul>
+
+                  </div>
+                  <div class="language">
+                    <input type="text" maxlength=15 name="url" data-minlength="1" placeholder="Language"  class="string language_input" onblur="Form.checkValidity(this);">
+               <div  class="button" id="addlanguage"><input type="button" " value="Add Language" onclick="CreateData.addLanguage()"></div>	
+                  </div>
+                  <div class="tools">
+                    <input type="text" maxlength=15 name="url" data-minlength="1"  placeholder="Tools" class="string tool_input" onblur="Form.checkValidity(this);">
+               <div  class="button" id="addtools"><input type="button" " value="Add Tools" onclick="CreateData.addTool()"></div>	
+                  </div>
+                  <div class="operatingsystem">
+                    <input type="text" maxlength=15 name="url" data-minlength="1" placeholder="Operating System" class="string operatingsystem_input" onblur="Form.checkValidity(this);">
+               <div  class="button" id="addos"><input type="button" " value="Add Operating System" onclick="CreateData.addOperatingSystem()"></div>	
+                  </div>
+               </section>
+               <section>
+                  <h3>WorkShop and Additional Experience</h3>
+                   <div  id="showworkshop">
+
+                  </div>
+                  <div id="workshop">
+                     <div class="row">
+                        <label>Description:</label>
+                        <textarea name="description" cols=100 rows=7  placeholder="Tell  About WorkShop"  data-minlength="5" class="string workshop_input" onblur="Form.checkValidity(this);"></textarea>
+                     </div>
+                  </div>
+                  <div class="button" id="addworkshop"><input type="button"  onclick="CreateData.addWorkShop();" value="Add Workshop And Additional Experience"></div>
+               </section>
+               <section>
+                  <h3>Hobbies</h3>
+                  <div  id="showhobby">
+
+                  </div>
+                  <div id="hobby">
+                     <div class="row">
+                        <label>Description:</label>
+                        <textarea name="description"  cols=100 rows=7 placeholder="Tell About Hobby" data-minlength="5" class="string hobby_input" onblur="Form.checkValidity(this);"></textarea>
+                     </div>
+                  </div>
+                  <div class="button" id="addworkshop"><input type="button"  onclick="CreateData.addHobby()" value="Add Hobbies"></div>
+               </section>
+               <input type="button" value="Get My Resume" id="submit" onclick="CreateData.onSubmit()">
+            </form>
+         </section>
+      </main>
+   </body>
+     <script type="text/javascript" src="js/validation.js"></script>
+     <script type="text/javascript" src="js/create.js"></script>
+         <script type="text/javascript" src="js/script.js"></script>
+</html>

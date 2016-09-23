@@ -30,7 +30,7 @@
     <!--  <meta http-equiv="refresh" content="30" /> -->
 
    </head>
-   <body id="resume" >
+   <body id="resume" onload="Resume.init();">
       <main>
          <header id="header">
             <h1 id="name"></h1>
@@ -40,11 +40,11 @@
             <p id="dob"><b>DOB:</b> </p>
          </header>
          <section>
-             <h3><span class="icons" ><i class="fa fa-dot-circle-o" aria-hidden="true"></i></span >CAREER OBJECTIVE<span onclick="showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
+             <h3><span class="icons" ><i class="fa fa-dot-circle-o" aria-hidden="true"></i></span >CAREER OBJECTIVE<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
               <p id="objective" class="hide"></p>
          </section>
          <section>
-            <h3 ><span class="icons"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>EDUCATIONAL QUALIFICATIONS<span onclick="showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
+            <h3 ><span class="icons"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>EDUCATIONAL QUALIFICATIONS<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
             
                <ul class="hide" id="educations" >
                  
@@ -53,12 +53,12 @@
          </section>
        
          <section>
-            <h3 ><span class="icons " ><i class="fa fa-suitcase" aria-hidden="true"></i></span>PROJECTS(<a href="http://www.github.com/riteshbisht" target="_blank">Github Profile</a>)<span onclick="showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
+            <h3 ><span class="icons " ><i class="fa fa-suitcase" aria-hidden="true"></i></span>PROJECTS(<a href="http://www.github.com/riteshbisht" target="_blank">Github Profile</a>)<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
             <ul class="hide" id="projects">
               </ul>
          </section>
          <section>
-            <h3 ><span class="icons "><i class="fa fa-laptop" aria-hidden="true"></i></span>TECHNICAL SKILLS<span onclick="showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
+            <h3 ><span class="icons "><i class="fa fa-laptop" aria-hidden="true"></i></span>TECHNICAL SKILLS<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
             <ul class="hide" id="skills">
             <li><b>Languages:</b></li>
             <li><b>Skills:</b></li>
@@ -68,12 +68,12 @@
          </section>
       
          <section >
-            <h3><span class="icons" ><i class="fa fa-tags" aria-hidden="true"></i></span >WORKSHOP AND ADDITIONAL EXPERIENCES<span onclick="showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
+            <h3><span class="icons" ><i class="fa fa-tags" aria-hidden="true"></i></span >WORKSHOP AND ADDITIONAL EXPERIENCES<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
             <ul class="line-height-2 hide" id="workshops">
                  </ul>
          </section>
          <section >
-            <h3> <span class="icons"><i class="fa fa-user-plus" aria-hidden="true"></i></span>HOBBIES<span onclick="showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
+            <h3> <span class="icons"><i class="fa fa-user-plus" aria-hidden="true"></i></span>HOBBIES<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
             <ul id="hobbies" class="hide">
             
             </ul>
@@ -84,7 +84,8 @@
          </footer>
       </main>
 
-        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="http://resumebuilderresources.com/js/script.js"></script>
+
    </body>
 
 </html>
