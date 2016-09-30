@@ -30,52 +30,103 @@
     <!--  <meta http-equiv="refresh" content="30" /> -->
 
    </head>
-   <body id="resume" onload="Resume.init();">
+   <body id="resume" ">
+     <div id="preloader">
+    <div id="status">&nbsp;</div>
+</div>
+   <script id="noresumeTemplate" type="text/x-jQuery-tmpl">
+      <h1>Please Visit <a href="form.html">HERE </a> To Build Your Resume</h1>
+   </script>
+   <script id="resumeTemplate" type="text/x-jQuery-tmpl">
+ 
       <main>
          <header id="header">
-            <h1 id="name"></h1>
-           <p><span id="phone"><b>PH:</b></span><span id="email"><b>Email:</b></span></p>
-            <address id="address"><b>ADDRESS:</b>
+            <h1 id="name">${firstname} ${lastname}</h1>
+           <p><span id="phone"><b>PH:</b>${phone}</span><span id="email"><b>Email:</b>${email}</span></p>
+            <address id="address"><b>ADDRESS:</b>${address}
             </address>
-            <p id="dob"><b>DOB:</b> </p>
+            <p id="dob"><b>DOB:</b> ${dob}</p>
          </header>
          <section>
-             <h3><span class="icons" ><i class="fa fa-dot-circle-o" aria-hidden="true"></i></span >CAREER OBJECTIVE<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
-              <p id="objective" class="hide"></p>
+             <h3><span class="icons" ><i class="fa fa-dot-circle-o" aria-hidden="true"></i></span >CAREER OBJECTIVE<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down rotate0" aria-hidden="true"></i></span></h3>
+              <p id="objective" class="hide">${objective}</p>
          </section>
          <section>
-            <h3 ><span class="icons"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>EDUCATIONAL QUALIFICATIONS<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
+            <h3 ><span class="icons"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>EDUCATIONAL QUALIFICATIONS<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down rotate0" aria-hidden="true"></i></span></h3>
             
                <ul class="hide" id="educations" >
-                 
+                    {{if educations}}
+                      {{each educations}}   
+                       <li><h4>${name}</h4>
+                         <ul>
+                            <li>${year}</li>
+                            <li>${university}</li>
+                            <li>${percentage}</li>  
+                         </ul>
+                       </li>
+
+                      {{/each}}
+                      {{/if}}
                </ul>
            
          </section>
        
          <section>
-            <h3 ><span class="icons " ><i class="fa fa-suitcase" aria-hidden="true"></i></span>PROJECTS(<a href="http://www.github.com/riteshbisht" target="_blank">Github Profile</a>)<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
+            <h3 ><span class="icons " ><i class="fa fa-suitcase" aria-hidden="true"></i></span>PROJECTS(<a href="http://www.github.com/riteshbisht" target="_blank">Github Profile</a>)<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down rotate0" aria-hidden="true"></i></span></h3>
             <ul class="hide" id="projects">
+             {{if projects}}
+              {{each projects}}
+                <li>${project}</li>
+             
+              {{/each}}
+
+            {{/if}}
               </ul>
          </section>
          <section>
-            <h3 ><span class="icons "><i class="fa fa-laptop" aria-hidden="true"></i></span>TECHNICAL SKILLS<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
+            <h3 ><span class="icons "><i class="fa fa-laptop" aria-hidden="true"></i></span>TECHNICAL SKILLS<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down rotate0" aria-hidden="true"></i></span></h3>
             <ul class="hide" id="skills">
-            <li><b>Languages:</b></li>
-            <li><b>Skills:</b></li>
-            <li><b>Tools:</b></li>
-             
+             {{if skills}}
+                  
+                  
+                      <li><b>Languages:</b>
+                    {{each skills.language}}
+                     <i> ${$value},</i>
+                    {{/each}}
+               
+              </li>
+         <li><b>Skills:</b> {{each skills.tools}}
+                     <i> ${$value},</i>
+                    {{/each}}
+               </li>
+            <li><b>Tools:</b>{{each skills.operatingSystem}}
+                     <i> ${$value},</i>
+                    {{/each}}
+               </li>
+            {{/if}}
             </ul>
          </section>
       
          <section >
-            <h3><span class="icons" ><i class="fa fa-tags" aria-hidden="true"></i></span >WORKSHOP AND ADDITIONAL EXPERIENCES<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
+            <h3><span class="icons" ><i class="fa fa-tags" aria-hidden="true"></i></span >WORKSHOP AND ADDITIONAL EXPERIENCES<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down rotate0" aria-hidden="true"></i></span></h3>
             <ul class="line-height-2 hide" id="workshops">
+            {{if workshops}}
+              {{each workshops}}
+                <li>${workshop}</li>
+              {{/each}}
+
+            {{/if}}
                  </ul>
          </section>
          <section >
-            <h3> <span class="icons"><i class="fa fa-user-plus" aria-hidden="true"></i></span>HOBBIES<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></h3>
+            <h3> <span class="icons"><i class="fa fa-user-plus" aria-hidden="true"></i></span>HOBBIES<span onclick="Resume.showHideData(this)"><i class="fa fa-chevron-circle-down rotate0" aria-hidden="true"></i></span></h3>
             <ul id="hobbies" class="hide">
-            
+               {{if hobbies}}
+              {{each hobbies}}
+                <li>${hobby}</li>
+              {{/each}}
+
+            {{/if}}
             </ul>
          </section>
          <footer >
@@ -83,9 +134,28 @@
           <span class="icons"><i class="fa fa-copyright" aria-hidden="true"></i></span>  Created by Ritesh bisht
          </footer>
       </main>
+      </script>
+         <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.4.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+ 
+        <script type="text/javascript" src="js/script.js"></script>
+        <script>
+        $(document).ready(Resume.init());
+        </script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-        <script type="text/javascript" src="http://resumebuilderresources.com/js/script.js"></script>
-
+        <!-- Preloader -->
+<script type="text/javascript">
+    //<![CDATA[
+        $(window).on('load', function() { // makes sure the whole site is loaded 
+            $('#status').fadeOut(); // will first fade out the loading animation 
+            $('#preloader').delay(1000).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+            $('body').delay(350).css({'overflow':'visible'});
+        })
+    //]]>
+    
+    </script>
+    <!-- Preloader -->
    </body>
 
 </html>

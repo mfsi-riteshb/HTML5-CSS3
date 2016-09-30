@@ -1,349 +1,283 @@
-
 //empty local storage data.
-localStorage.setItem("data_ritesh","");
+localStorage.setItem("data_ritesh", "");
 
-var MyApp=MyApp||{
-	ResumeData:{}
-}
+var MyApp = MyApp || {
+	ResumeData:{},
+   init:function(){
+   	$("#addeducation").on("click",function(){
+   		CreateData.addEducation();
+   	});
 
-var myStorage=localStorage;
+   	$("#addprojects").on("click",function(){
+   		CreateData.addProject();
+   	});
+   	$("#addlanguage").on("click",function(){
+   		CreateData.addLanguage();
+   	});
 
-var CreateData={
-	addEducation:function() {
-		var educationElem=document.getElementById("education");
-		//all the input of education section
-		var input=educationElem.getElementsByClassName("education_input");
-		var education={};
-		var flag=true;
-		//if form validation passes create new ul and li properties in it.
-		var ul=Resume.createChildEmptyNode(document.getElementById("showeducation"),"ul");
-		ul.style.position="relative";
-		//img used  to add icon to remove added  education
 
-		var img=Resume.createChildEmptyNode(ul,"img");
-		img.setAttribute("class","close");
-		img.setAttribute("src","https://cdn1.iconfinder.com/data/icons/nuove/128x128/actions/fileclose.png");    //closed icon used to remove added education
-		
-		//function to perform when image icon of particular education is clicked
-		img.addEventListener("click",function(){
-			console.log(this);
-				this.parentNode.parentNode.removeChild(this.parentNode);
-				MyApp.ResumeData.educations.pop();
+   	$("#addtools").on("click",function(){
+   		CreateData.addTool();
+   	});
 
-		},false);
+   	$("#addos").on("click",function(){
+   		CreateData.addOperatingSystem();
+   	});
+ 
+   	$("#addworkshop").on("click",function(){
+   		CreateData.addWorkShop();
+   	});
+   	$("#addhobby").on("click",function(){
+   		CreateData.addHobby();
+   	});
 
-		for(var i=0;i<input.length;i++){
-			var name=input[i].getAttribute("name");
-			var value=input[i].value;
-			//if form validation is not passed or function inside if return true then remove the above created ul
-			// because it is now not required also show message and set meaage to false such that no education array is created
-			if(value==""||Form.checkValidity(input[i])) {
-				ul.parentNode.removeChild(ul);
-				alert("please fill all the details and correct details");
-				education={};
-				flag=false;
-				break;
-			}
-			else{
-				
-				Resume.createChildNodeWithText(ul,"li",name+":"+value);
-				education[name]=value;
-			}
+   }
+};
 
-		}
+//$( function() {
+//  $( "#datepicker" ).datepicker();
+//  } );
 
-		//if form calidation passed then create education array/get already present education array and push education  object into it
-		if(flag) {
-			MyApp.ResumeData.educations=MyApp.ResumeData.educations||Array();
-			console.log(MyApp.ResumeData.educations.push(education));
-		}
-  
-	},
-	addProject:function() {
-        var projectElem=document.getElementById("project");
+var myStorage = localStorage;
+MyApp.init();
+var CreateData = {
+    closeIcon: "https://cdn1.iconfinder.com/data/icons/nuove/128x128/actions/fileclose.png",
+
+    addEducation: function() {
+        //all the input of education section
+        var $inputs = $(".education_input");
+        var education = {};
+        if ($inputs.valid()) {
+            //if form validation passes create   ul in it.
+            $ul = $("<ul></ul>").appendTo($("#showeducation"));
+            $ul.css("position", "relative");
+            
+            var str = "";
+
+            $inputs.each(function(index) {
+                var name = $(this).attr("name");
+                var value = $(this).val();
+                str = str + "<li>" + name + ":" + value + "</li>";
+                education[name] = value;
+            });
+         
+            $ul.append(str);
+            $("<img></img>").appendTo($ul).
+            addClass("close").
+         
+            attr("src", this.closeIcon).
+         
+
+            on("click", function() {
+                $(this).parent().remove();
+                MyApp.ResumeData.educations.pop();
+            });
+            MyApp.ResumeData.educations = MyApp.ResumeData.educations || Array();
+            console.log(MyApp.ResumeData.educations.push(education));
+        } else {
+            alert("please fill all the detail");
+        }
+
+
+
+    },
+
+    addProject: function() {
+        var $projectElem = $("#showproject");
         //all the input of project section
-		var input=projectElem.getElementsByClassName("project_input");
-		var project={};
-		var flag=true;
-		for(var i=0;i<input.length-1;i++) {
-			var name=input[i].getAttribute("name");
-			var value=input[i].value;
+        var $inputs = $(".project_input");
+        var project = {};
+        if ($inputs.valid()) {
+            $ul = $projectElem.find("ul");
+            var str = "";
+            $inputs.each(function(index) {
+                var name;
+                var value = $(this).val();
 
-			//Form validation for each input should return true
-			if(value==""||Form.checkValidity(input[i])) {	
-				
-				alert("please fill all the details and correct details");
-				project={};
-				flag=false;
-				break;
-			}
-			else{
-				//this  if/else is used for if url provided and if not
-				var ul=Resume.createChildEmptyNode(document.getElementById("showproject"),"ul");
-				var li;
-				if(input[i+1].value!=""){
-					 li=Resume.createChildNodeWithText(ul,"li",name+":"+value+" ("+input[i+1].value+")");	
-				}
-				else {
-					li=Resume.createChildNodeWithText(ul,"li",name+":"+value);	
-				}
-				li.style.position="relative";
-				//img used  to add icon to remove added project
-				var img=Resume.createChildEmptyNode(li,"img");
-				img.setAttribute("class","close");
-				img.setAttribute("src","https://cdn1.iconfinder.com/data/icons/nuove/128x128/actions/fileclose.png");
-				img.addEventListener("click",function() {
-				//deleting the particular  li element in which this image exist  o.e ul>li>img	
-				this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
-				MyApp.ResumeData.projects.splice(MyApp.ResumeData.projects.indexOf(this.parentNode.childNodes[0].nodeValue),1);
-				} ,false);
-				project[name]=value;
-			}
-		}
-		//if form validate then create project array and push project object in it.
-		if(flag) {
-			MyApp.ResumeData.projects=MyApp.ResumeData.projects||Array();
+                if (index === 0) {
+                    str = str + value;
+                    name = $(this).attr("name");
+                    project[name] = str;
+
+                } else if (index == 1 && value !== "") {
+                    str = str + "(" + value + ")";
+                    project[name] = str;
+                }
+
+            });
+            $li = $("<li>" + str + "</li>").appendTo($ul);
+            $li.css("position", "relative");
+            $("<img></img>").appendTo($li).
+            addClass("close").
+            attr("src", this.closeIcon).
+            on("click", function() {
+                $(this).parent().remove();
+                MyApp.ResumeData.projects.splice(MyApp.ResumeData.projects.indexOf($(this).parent().text()), 1);
+            });
+            MyApp.ResumeData.projects = MyApp.ResumeData.projects || Array();
             console.log(MyApp.ResumeData.projects.push(project));
-		}
-  
+        } else {
+            alert("please fill all the detail");
+        }
 
 
-		
-	},
-	addWorkShop:function(){
-		 
-		var workshopElem=document.getElementById("workshop");
-		//all the input of workshop section
-		var input=workshopElem.getElementsByClassName("workshop_input");
-		var workshop={};
-		var flag=true;
-		for(var i=0;i<input.length;i++){
-			var name=input[i].getAttribute("name");
-			var value=input[i].value;
-			//check validity of every section
-			if(value=="" ||Form.checkValidity(input[i])) {	
-				
-				alert("please fill all the details and correct details");
-				workshop={};
-				flag=false;
-				break;
-			}
-			else {
-				var ul=Resume.createChildEmptyNode(document.getElementById("showworkshop"),"ul");
-     			var li=Resume.createChildNodeWithText(ul,"li"," "+value);
-     			li.style.position="relative";
-     			//img used  to add icon to remove added workshop
-				var img=Resume.createChildEmptyNode(li,"img");
-				img.setAttribute("class","close");
-				img.setAttribute("src","https://cdn1.iconfinder.com/data/icons/nuove/128x128/actions/fileclose.png");
-				img.addEventListener("click",function() {
-				this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
-				//removing particular workshop out of many using its value (Using splice function)
-				MyApp.ResumeData.workshops.splice(MyApp.ResumeData.workshops.indexOf(this.parentNode.childNodes[0].nodeValue),1);
-					} ,false);
-				workshop[name]=value;
-			}
 
-		}
-		//if form validate then create project array and push workshop object in it.
-		if(flag){
-			 MyApp.ResumeData.workshops=MyApp.ResumeData.workshops||Array();
-		     console.log(MyApp.ResumeData.workshops.push(workshop));
-		}
-	},
-	addHobby:function() {
-		var hobbyElem=document.getElementById("hobby");
-		//all the input of hobby section
-		var input=hobbyElem.getElementsByClassName("hobby_input");
-		var hobby={};
-		var flag=true;
-		var ul=Resume.createChildEmptyNode(document.getElementById("showhobby"),"ul");
-		for(var i=0;i<input.length;i++){
-			var name=input[i].getAttribute("name");
-			var value=input[i].value;
-			//for validation inputs of hobby section 
-			if(value==""||Form.checkValidity(input[i])) {	
-				
-				alert("please fill all the details and correct details");
-				document.getElementById("showhobby").removeChild(ul);
-				hobby={};
-				flag=false;
-				break;
-			}
-			else {
-		    	var li=Resume.createChildNodeWithText(ul,"li"," "+value);
-		    	li.style.position="relative";
-				var img=Resume.createChildEmptyNode(li,"img");
-				img.setAttribute("class","close");
-				img.setAttribute("src","https://cdn1.iconfinder.com/data/icons/nuove/128x128/actions/fileclose.png");
-				img.addEventListener("click",function() {
-				this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
-				MyApp.ResumeData.hobbies.splice(MyApp.ResumeData.hobbies.indexOf(this.parentNode.childNodes[0].nodeValue),1);
-					} ,false);
-				hobby[name]=value;
-			}
 
-		}
-		//if form validate then create hobby array and push hobbies object in it.
-		if(flag){
-			 MyApp.ResumeData.hobbies=MyApp.ResumeData.hobbies||Array();
-   			 console.log(MyApp.ResumeData.hobbies.push(hobby));
-		}
-	},
-	addLanguage:function() {
-			//all the input of language section
-			var input=document.getElementsByClassName("language_input");
-			var val=input[0].value;
-			MyApp.ResumeData.skills=MyApp.ResumeData.skills||Array();
-			MyApp.ResumeData.skills[0]=MyApp.ResumeData.skills[0]||{"language":new Set()}
-			if(Form.checkValidity(input[0])) {
-				alert("please fill the correct details");
-			}
-			else {
-				if(MyApp.ResumeData.skills[0].language.has(val)){
-						//do nothing
-				}
-				else{
-					MyApp.ResumeData.skills[0].language.add(val);
-					var span=document.getElementById("span_language");
-					
-					//to remove already present language input
-					while (span.firstChild) {
-   						 span.removeChild(span.firstChild);
-					}
-					Resume.createChildTextNode(span,Array.from(MyApp.ResumeData.skills[0].language).join(", "));
-					var li=document.getElementById("li_language");
-					li.style.position="relative";
-					console.log(li.contains(img));
-					var img=li.getElementsByClassName("close");
-					if(!li.contains(img[0])){
-				    img=Resume.createChildEmptyNode(li,"img");
-					img.setAttribute("class","close");
-					img.setAttribute("src","https://cdn1.iconfinder.com/data/icons/nuove/128x128/actions/fileclose.png");
-					img.addEventListener("click",function() {
-					this.previousSibling.removeChild(this.previousSibling.firstChild);
-					this.parentNode.removeChild(this);
-					MyApp.ResumeData.skills[0].language=new Set();
-						} ,false);
-					}
-				}
-				
-			}
-	},
-	addTool:function() {
-		var input=document.getElementsByClassName("tool_input");
-			var val=input[0].value;
-			MyApp.ResumeData.skills=MyApp.ResumeData.skills||Array();
-			MyApp.ResumeData.skills[1]=MyApp.ResumeData.skills[1]||{"tools":new Set()}
-			
-            console.log(input);
-			if(Form.checkValidity(input[0])){
-				alert("please fill the correct details");
-			}else{
-				if(MyApp.ResumeData.skills[1].tools.has(val)){
-					//do nothing
-				}
-				else{
-					console.log(val);
-				MyApp.ResumeData.skills[1].tools.add(val);
-				var span=document.getElementById("span_tool");
-				
-				//to remove already present language input
-				while (span.firstChild) {
-   						 span.removeChild(span.firstChild);
-				}
-				Resume.createChildTextNode(span,Array.from(MyApp.ResumeData.skills[1].tools).join(", "));
-				var li=document.getElementById("li_tool");
-				li.style.position="relative";
-				var img=li.getElementsByClassName("close");
-				//to hceck if close image is already added
-				if(!li.contains(img[0])){
-					var img=Resume.createChildEmptyNode(li,"img");
-					img.setAttribute("class","close");
-					img.setAttribute("src","https://cdn1.iconfinder.com/data/icons/nuove/128x128/actions/fileclose.png");
-					img.addEventListener("click",function() {
-					this.previousSibling.removeChild(this.previousSibling.firstChild);
-					this.parentNode.removeChild(this);
-					MyApp.ResumeData.skills[1].tools=new Set();
-						} ,false);
-					}
-				}
-				
-				
-			}
+    },
+    addWorkShop: function() {
 
-	},
-	addOperatingSystem:function() {
-		var input=document.getElementsByClassName("operatingsystem_input");
-			var val=input[0].value;
-			MyApp.ResumeData.skills=MyApp.ResumeData.skills||Array();
-			MyApp.ResumeData.skills[2]=MyApp.ResumeData.skills[2]||{"operatingSystem":new Set()}
-			
-            console.log(input);
-			if(Form.checkValidity(input[0])){
-				alert("please fill the correct details");
-			}
-			else {
-				if(MyApp.ResumeData.skills[2].operatingSystem.has(val)){
-					//do nothing
-				}
-				else{
-					console.log(MyApp.ResumeData.skills[2].operatingSystem);
-					MyApp.ResumeData.skills[2].operatingSystem.add(val);
-					var span=document.getElementById("span_operatingsystem");
-					//to remove already present language input
-					while (span.firstChild) {
-	   						 span.removeChild(span.firstChild);
-					}
-					Resume.createChildTextNode(span,Array.from(MyApp.ResumeData.skills[2].operatingSystem).join(", "));
-					var li=document.getElementById("li_operatingsystem");
-					li.style.position="relative";
-					var img=li.getElementsByClassName("close");
-					//to chekc if close iimage is already added
-					if(!li.contains(img[0])){
-						var img=Resume.createChildEmptyNode(li,"img");
-						img.setAttribute("class","close");
-						img.setAttribute("src","https://cdn1.iconfinder.com/data/icons/nuove/128x128/actions/fileclose.png");
-						img.addEventListener("click",function() {
-						this.previousSibling.removeChild(this.previousSibling.firstChild);
-						this.parentNode.removeChild(this);
-						MyApp.ResumeData.skills[2].operatingSystem=new Set();
-							} ,false);
-					}
-				
-				}
-				
-			}
+        var $workshopElem = $("#showworkshop");
+        //all the input of workshop section
+        var $inputs = $(".workshop_input");
+        var workshop = {};
+        if ($inputs.valid()) {
+            $ul = $workshopElem.find("ul");
+            var $li;
+            $inputs.each(function(index) {
+                $li = $("<li>" + $(this).val() + "</li>").appendTo($ul);
+                 name = $(this).attr("name");
+                workshop[name] = $(this).val();
+            });
+            $li.css("position", "relative");
+            $("<img></img>").appendTo($li).
+            addClass("close").
+            attr("src", this.closeIcon).
+            on("click", function() {
 
-	},
-	onSubmit:function(){
-      
-        var input=document.getElementsByClassName("basic_input");
-		var flag=true;
-        for(var i=0;i<input.length;i++){	
-        	//check validity for basic input
-        	if(Form.checkValidity(input[i])) {
-        		console.log(input[i]);
- 				flag=false;
-        		break;
-        	}
-        	else {
-        		MyApp.ResumeData[input[i].getAttribute("name")]=input[i].value;
-        	}
-		}
-		//check every detail  is set or not
-        if(flag&&MyApp.ResumeData.skills&&MyApp.ResumeData.skills[0]&&MyApp.ResumeData.skills[1]&&MyApp.ResumeData.skills[2]&&MyApp.ResumeData.educations&&MyApp.ResumeData.hobbies&&MyApp.ResumeData.workshops&&MyApp.ResumeData.projects){
-        	MyApp.ResumeData.skills[0].language=Array.from(MyApp.ResumeData.skills[0].language)||new Array();
-			MyApp.ResumeData.skills[1].tools=Array.from(MyApp.ResumeData.skills[1].tools)||new Array();
-        	MyApp.ResumeData.skills[2].operatingSystem=Array.from(MyApp.ResumeData.skills[2].operatingSystem)||new Array();
-         	myStorage.setItem("data_ritesh", JSON.stringify(MyApp.ResumeData));
-        	window.location="index.html"
-        	}
-        	else {
-        		alert("please fill all the details");
-        	}
+                console.log(MyApp.ResumeData.workshops.splice(MyApp.ResumeData.workshops.indexOf($(this).parent().text()), 1));
+                $(this).parent().remove();
+                console.log(MyApp.ResumeData.workshops);
+            });
+            MyApp.ResumeData.workshops = MyApp.ResumeData.workshops || Array();
+            console.log(MyApp.ResumeData.workshops.push(workshop));
+        } else {
+            alert("please fill all the detail");
+        }
+
+
+
+    },
+    addHobby: function() {
+
+        var $workshopElem = $("#showhobby");
+        //all the input of workshop section
+        var $inputs = $(".hobby_input");
+        var hobby = {};
+        if ($inputs.valid()) {
+            $ul = $workshopElem.find("ul");
+            var $li;
+            $inputs.each(function(index) {
+                $li = $("<li>" + $(this).val() + "</li>").appendTo($ul);
+                 name = $(this).attr("name");
+                hobby[name] = $(this).val();
+            });
+            $li.css("position", "relative");
+            $("<img></img>").appendTo($li).
+            addClass("close").
+            attr("src", this.closeIcon).
+            on("click", function() {
+                $(this).parent().remove();
+
+                MyApp.ResumeData.hobbies.splice(MyApp.ResumeData.hobbies.indexOf($(this).parent().text()), 1);
+
+                console.log(MyApp.ResumeData.hobbies);
+            });
+            MyApp.ResumeData.hobbies = MyApp.ResumeData.hobbies || Array();
+            console.log(MyApp.ResumeData.hobbies.push(hobby));
+        } else {
+            alert("please fill all the detail");
+        }
+
+    },
+    addLanguage: function() {
+        //all the input of language section
+        var $input = $(".language_input");
+        MyApp.ResumeData.skills = MyApp.ResumeData.skills || {};
+        MyApp.ResumeData.skills.language = MyApp.ResumeData.skills.language || 
+             new Set();
+        var val = $input.val();
+        if ($input.valid()) {
+            if (MyApp.ResumeData.skills.language.has(val)) {
+            } else {
+                MyApp.ResumeData.skills.language.add(val);
+                $("#span_language").text(Array.from(MyApp.ResumeData.skills.language).join(", "));
+
+              if($("#li_language").find(".close").length===0){
+                  $("<img></img>").appendTo($("#li_language")).
+                addClass("close").
+                attr("src", this.closeIcon).
+                on("click", function() {
+                    $("#span_language").empty();
+                    MyApp.ResumeData.skills.tools = new Set();
+                    $(this).remove();
+                });	
+                }
+            }
+             console.log(MyApp.ResumeData.skills);
+        }
+    },
+    addTool: function() {
+
+        var $input = $(".tool_input");
+        MyApp.ResumeData.skills = MyApp.ResumeData.skills || {};
+        MyApp.ResumeData.skills.tools = MyApp.ResumeData.skills.tools || 
+            new Set()
         
-	}
+        var val = $input.val();
+        if ($input.valid()) {
+            if (MyApp.ResumeData.skills.tools.has(val)) {
 
-}
+            } else {
+                MyApp.ResumeData.skills.tools.add(val);
+                $("#span_tool").text(Array.from(MyApp.ResumeData.skills.tools).join(", "));
+                if($("#li_tool").find(".close").length===0){
+                  $("<img></img>").appendTo($("#li_tool")).
+                addClass("close").
+                attr("src", this.closeIcon).
+                on("click", function() {
+                    $("#span_tool").empty();
+                    MyApp.ResumeData.skills.tools = new Set();
+                    $(this).remove();
+                });	
+                }
+              
+                console.log(MyApp.ResumeData.skills);
+            }
+        }
 
+    },
+    addOperatingSystem: function() {
+        var $input = $(".operatingsystem_input");
+        MyApp.ResumeData.skills = MyApp.ResumeData.skills || {};
+        MyApp.ResumeData.skills.operatingSystem= MyApp.ResumeData.skills.operatingSystem || 
+            new Set()
+       
+        var val = $input.val();
+        if ($input.valid()) {
+            if (MyApp.ResumeData.skills.operatingSystem.has(val)) {
+
+            } else {
+                MyApp.ResumeData.skills.operatingSystem.add(val);
+                $("#span_operatingsystem").text(Array.from(MyApp.ResumeData.skills.operatingSystem).join(", "));
+                  if($("#li_operatingsystem").find(".close").length===0){
+                  	$("<img></img>").appendTo($("#li_operatingsystem")).
+                addClass("close").
+                attr("src", this.closeIcon).
+                on("click", function() {
+                    $("#span_operatingsystem").empty();
+                    MyApp.ResumeData.skills.operatingSystem = new Set();
+                     $(this).remove();
+                });
+                  }
+                
+                 console.log(MyApp.ResumeData.skills);
+            }
+        }
+
+
+    },
+    onSubmit: function() {
+
+       
+    }
+};

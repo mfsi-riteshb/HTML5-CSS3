@@ -7,6 +7,29 @@ html{
    
 }
 
+
+
+#preloader {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:#fff; /* change if the mask should have another color then white */
+    z-index:99; /* makes sure it stays on top */
+}
+
+#status {
+    width:500px;
+    height:500px;
+    position:absolute;
+    left:40%; /* centers the loading animation horizontally one the screen */
+    top:40%; /* centers the loading animation vertically one the screen */
+    background-image:url(../images/load.gif); /* path to your loading animation */
+    background-repeat:no-repeat;
+    background-position:center;
+    margin:-100px 0 0 -100px; /* is width and height divided by two */
+}
 #objective {
 	padding:0px  10px 10px 20px;
 	font-size: 18px;
@@ -209,6 +232,15 @@ address{
     width:250px;
     height: 30px;
 }
+
+#li_tool,#li_language,#li_operatingsystem{
+	position: relative;
+}
+
+#resume-form .error{
+	color:red;
+	font-size:10px;
+}
 #resume-form main section {
 	display: block;
 	border-bottom: 2px solid black;
@@ -227,6 +259,23 @@ address{
 	width: 40px;
 	height:40px;
 }
+
+.rotate0{
+ -ms-transform: rotate(0deg); /* IE 9 */
+    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+    transform: rotate(0deg);
+}
+
+
+.rotate90{
+	 -ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: rotate(-90deg);
+
+}
+
+
+
 #resume-form input[type=button] {
 
 	

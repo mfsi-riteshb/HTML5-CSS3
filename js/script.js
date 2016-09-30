@@ -1,150 +1,142 @@
-var Resume={
-    resumeData:"",
-    init:function(){
-        this.resumeData=JSON.parse(localStorage.getItem("data_ritesh"));
-        var educationElement=document.getElementById("educations");
-        var projectElement=document.getElementById("projects");
-        var skillsElement=document.getElementById("skills");
-        var skillsElement=skillsElement.getElementsByTagName("li"); //recovering li element from dom
-        var workshopElement=document.getElementById("workshops");
-        var hobbyElement=document.getElementById("hobbies");
-        var headerElement=document.getElementById("header");
-        var objectiveElement=document.getElementById("objective");
-        var phoneElement=document.getElementById("phone");
-        var emailElement=document.getElementById("email");
-        var nameElement=document.getElementById("name");
-        var addressElement=document.getElementById("address");
-        var dobElement=document.getElementById("dob");
+function Res(data) {
+    this.firstname = data.firstname;
+    this.lastname = data.lastname;
+    this.phone= data.phone;
+    this.address = data.address;
+    this.dob = data.dob;
+    this.email = data.email;
+    this.skills=data.skills;
+    this.objective = data.objective;
+    this.educations = data.educations;
+    this.projects = data.projects;
+    this.hobbies = data.hobbies;
+    this.workshops = data.workshops;
 
-        this.createChildTextNode(nameElement,this.resumeData.firstname+" "+this.resumeData.lastname);
+};
 
-        this.createChildTextNode(objectiveElement,this.resumeData.objective);
-        
-        this.createChildTextNode(phoneElement,this.resumeData.phone);
-        this.createChildTextNode(emailElement,this.resumeData.email);
+var ResumeData={
+"firstname":"Ritesh",
+"lastname":"Bisht",
+"phone":"9958680578",
+"address":"Plot no 72,Block b-9,Sector-5,rohini,Delhi-110085",
+"dob":"17th july,1994",
+"email":"ritesh.bisht93@gmail.com",
+"objective":"To Reach excellence in all Sphere of information Technology ,by Seeking a position, which would enhance my analytical,decision making ,development \
+and implementation skills in a professional work environment, thereby achieving group goals",
+"educations":[
+            {"name":"B.Tech-Information Techology","year":"2012-2016","university":"Guru Gobind Singh Indrapratha University(GGSIPU)","percentage":"73"},
+        {"name":"XII ","year":"2011-2012","university":"CBSE","percentage":"84"},
+            {"name":"X","year":"2009-2010","university":"CBSE","percentage":"80"}
+            ],
+"projects":[
+       {"project":"Created a Bank Management System as a college project using java and also an standalone application in java of snake game","url":""},
+          { "project":"created a portfolio website using html,materialize and javascript","url":""},
+       {"project":"participated in web development competition and created a website using html,bootstrap,jquery.","url":"riteshbisht93.com/EWS/home.html"},
+       { "project":"did a summer project regarding providing university studentwith study material to read online and chat application(Laravel framework)","url":""},  
+           {"project":"did some research on natural language processing(Language used python)","url":""},
+         {"project": "Developed website(Corona Bpit) and created an android app(Corona 2k16) for college festival.","url":""},
+    {"project":"Rest Api creation. (PREVIEW).","url":""}
 
-        this.createChildTextNode(addressElement,this.resumeData.address);    
-        this.createChildTextNode(dobElement,this.resumeData.dob);
+    ],
 
-         //for projects
-        this.createListElement(projectElement,this.resumeData.projects);
+"skills":{
+    "language":["java","Android","C","C++","SQL","HTML","Javascript","CSS","Jquery","Python"],
+     "tools":["Sublime Text","Atom Text Editor","Eclipse","Android Studio"],
+    "operatingSystem":["Windows(XP,8.1)","Linux(Ubuntu)"]
+},
     
-
-        //for hobbies
-        this.createListElement(hobbyElement,this.resumeData.hobbies);
+"workshops":[
     
+   {"workshop":"Attended Linux WorkShop organized by Rlabz"},
+    {"workshop":"Completed a java course from innobuzz knowledge Solutions"},
+    {"workshop":"Attended OSD conference at jaypee Knowledge Solutions"},
+    {"workshop":"Appeared in AMCAT exam and acquired 95 percentile in Computer Programming and 88% percentilr in Computer Science."}
 
-        //Array for storing
-        this.createListElement(workshopElement,this.resumeData.workshops);
-
-        var skill=this.resumeData.skills;
-
-        // appending above three string to adjacent li element.
-        this.createChildTextNode(skillsElement[0],skill[0].language.join(", "));
-        this.createChildTextNode(skillsElement[1],skill[1].tools.join(", "));
-        this.createChildTextNode(skillsElement[2],skill[2].operatingSystem.join(", "));
-
-        //for showing the education data
-        var educationObj=this.resumeData.educations; 
-
-        //creating li elements and provide class as outerli
-        for(var i=0;i<educationObj.length;i++){
-            this.createChildEmptyNode(educationElement,"li");
-            this.setAttribute(educationElement.getElementsByTagName("li")[i],"class","outerli");
-        }
-
-        var liElements=educationElement.getElementsByClassName("outerli");
-        //creating header and li for above created li elemnets
+    ],
+"hobbies":[
     
-        for(var j=0;j<liElements.length;j++){
-            this.createChildNodeWithText(liElements[j],"h4",educationObj[j].name);
-            this.createChildEmptyNode(liElements[j],"ul");
-            this.createChildNodeWithText(liElements[j].getElementsByTagName("ul")[0],"li",educationObj[j].year);  
-            this.createChildNodeWithText(liElements[j].getElementsByTagName("ul")[0],"li",educationObj[j].university);
-            this.createChildNodeWithText(liElements[j].getElementsByTagName("ul")[0],"li",educationObj[j].percentage);
-        }
-    },
-
-    
-    //function to show or hide datas section
-
-    showHideData:function(element) {
-        var parentOfelementToHide=element.parentNode.parentNode;
-        var elementToHideOrShow=parentOfelementToHide.getElementsByClassName("hide")[0] ||
-                      parentOfelementToHide.getElementsByClassName("show")[0];
-        var icon=element.childNodes[0];
-        if (elementToHideOrShow.className=="hide") {
-            this.setAttribute(elementToHideOrShow,"class","show");   
-            this.rotateElement(icon,-90);   
-        }
-        else {
-            this.setAttribute(elementToHideOrShow,"class","hide");
-            icon.style.transform="rotate(0deg)";
-            this.rotateElement(icon,0);
-        }
-
-    },
-
-    createChildNodeWithText:function(element,elementType,text){
-
-        var node=document.createElement(elementType);
-        var textnode=document.createTextNode(text);
-        node.appendChild(textnode);
-       return element.appendChild(node);
-    },
-    
-    //for creating emptynode and appending it to element
-    createChildEmptyNode:function(element,elementType){
-        var node=document.createElement(elementType);
-        return element.appendChild(node);
+    {"hobby":"Eager to learn about the basic of Computer Science to better understand the essence of programming and improve my skills."},
+    {"hobby":"Watching movies and Listening to movies."}
 
 
-    },
 
-    //for creating a text node only and appending it with a child;
-    createChildTextNode:function(element,text){
-        var node=document.createTextNode(text);
-       return element.appendChild(node);
-    },
+    ]
+};
 
-    //for setting attribute of element
-    setAttribute:function(element,attribute,value){
-        element.setAttribute(attribute,value);
-    },
 
-    //creating list element from object array.
-    createListElement:function(element,listArray){
-        for (var i=0;i<listArray.length;i++) {
-        this.createChildNodeWithText(element,"li",listArray[i].description);
-        }
-    },
 
-    rotateElement:function(element,deg) {
-    //standard syntax
-    element.style.transform="rotate("+deg+"deg)";
-    //code for safari
-    element.style.WebKitTransform="rotate("+deg+"deg)";
-    //code for IE9
-    element.style.msTransform="rotate("+deg+"deg)";     
+var Resume = {
+    resumeData: {},
+    init: function() {
+
+        //----- CODE FOR JQUERY--------//
+
+        //setting up basic data;
+        // $("#objective").text(this.resumeData.objective);
+        // $("#phone").text(this.resumeData.phone);
+        // $("#email").text(this.resumeData.email);
+        // $("#name").text(this.resumeData.firstname + " " + this.resumeData.lastname);
+        // $("#address").text(this.resumeData.address);
+        // $("#dob").text(this.resumeData.dob);
+        // //set data for projects
+        // this.createListElement($("#projects"), this.resumeData.projects);
+        // //set data for hobbies
+        // this.createListElement($("#hobbies"), this.resumeData.hobbies);
+        // //set data for workshop
+        // this.createListElement($("#workshops"), this.resumeData.workshops);
+        // var skills = this.resumeData.skills;
+        // // appending above three string to adjacent li element.
+        // $("#skills").find("li").each(function(index) {
+        //     if (index === 0) {
+        //         console.log(skills[0].language.join(", "));
+        //         $(this).append(skills[0].language.join(", "));
+        //     } else if (index == 1) {
+        //         console.log(skills[1].tools.join(", "));
+        //         $(this).append(skills[1].tools.join(", "));
+        //     } else {
+        //         $(this).append(skills[2].operatingSystem.join(", "));
+        //     }
+        // });
+
+if(localStorage.getItem("data_ritesh")){
+    var ritesh = new Res(JSON.parse(localStorage.getItem("data_ritesh")));
+    //  var ajay = new Res(ResumeData);
+     console.log("hello");
+     $("#resumeTemplate").tmpl(ritesh).appendTo("body");
+    //$('#resumeTemplate').tmpl(ajay).appendTo("body");
+}    
+else{
+     $("#noresumeTemplate").tmpl().appendTo("body");         
     }
 
-}
+},
+    //function to show or hide datas section
+    showHideData: function(el) {
+        var $element = $(el);
+
+        var $parentOfelementToHide = $element.parent().parent();
+        var $elementToHideOrShow = $parentOfelementToHide.find(".hide");
+        if ($elementToHideOrShow.length === 0) {
+            $elementToHideOrShow = $parentOfelementToHide.find(".show");
+        }
+        var $icon = $element.children();
+        $icon.toggleClass("rotate90");
+        $icon.toggleClass("rotate0");
+        $elementToHideOrShow.toggleClass("show");
+        $elementToHideOrShow.toggleClass("hide");
+    },
+
+
+    // //creating list element from object array.
+    // createListElement: function($element, listArray) {
+    //     var str = "";
+    //     console.log(listArray);
+    //     for (var i = 0; i < listArray.length; i++) {
+    //         str = str + "<li>" + listArray[i].description + "</li>";
+    //     }
+    //     $element.append(str);
+    // },
 
 
 
-
-
-
-
-
-
-
-
-
-   
-
-    
-    
-
-
-
+};
